@@ -37,7 +37,7 @@ authController.Register = async (req, res) => {
         username: username,
         fullName: fullName,
         email: email,
-        password: bcrypt.hasSync(password, 8),
+        password: bcrypt.hashSync(password, 8),
       };
 
       User.create(newUser)
@@ -95,7 +95,7 @@ authController.signIn = async (req, res) => {
     }
     //valid user
 
-    const token = jwt.sign({ username: user.username }, dbConfig.secret, {
+    const token = jwt.sign({ username: user.username }, config.secret, {
       expiresIn: 864000, //24h
     });
 

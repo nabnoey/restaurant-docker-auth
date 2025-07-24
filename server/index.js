@@ -14,15 +14,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import db from "./models/index.js";
-// const role = db.role;
-// const initRole = () => {
-//   Role.create({ id: 1, roleName: "user" });
-//   Role.create({ id: 2, roleName: "moderator" });
-//   Role.create({ id: 3, roleName: "admin" });
-// }
-// db.sequelize.sync({ force: ture }).then(() => {
-//   initRole();
-// })
+const Role = db.Role;
+const initRole = () => {
+  Role.create({ id: 1, roleName: "user" });
+  Role.create({ id: 2, roleName: "moderator" });
+  Role.create({ id: 3, roleName: "admin" });
+};
+db.sequelize.sync({ force: true }).then(() => {
+  initRole();
+});
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("create table user_roles");
