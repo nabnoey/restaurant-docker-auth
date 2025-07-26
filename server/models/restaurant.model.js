@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "./db.js";
-import { title } from "process";
+
 
 const Restaurant = sequelize.define("restaurant", {
   id: {

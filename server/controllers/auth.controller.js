@@ -101,21 +101,23 @@ authController.signIn = async (req, res) => {
 
     const authorities = [];
     user.getRoles().then((roles) => {
+      console.log(roles);
       for (let i = 0; i < roles.length; i++) {
         //ROLES_USER
-        authorities.push("ROLES_" + roles[i].name.toUpperCase());
+        authorities.push("ROLES_" + roles[i].roleName.toUpperCase());
       }
-    });
-
-    res.send({
+       res.send({
       token: token,
       authorities: authorities,
       userInfo: {
-        name: user.name,
+        fullName: user.fullName,
         email: user.email,
         username: user.username,
       },
     });
+    });
+
+   
   });
 };
 
